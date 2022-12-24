@@ -16,33 +16,24 @@
 // не чаще чем раз в секунду.
 
 import Player from '@vimeo/player';
-console.log(Player);
+// console.log(Player);
 
- const iframe = document.querySelector('iframe');
- const player = new Vimeo.Player(iframe);
+import throttle from 'lodash.throttle';
+// console.log(throttle);
 
-//     player.on('play', function() {
-//         console.log('played the video!');
-//     });
+const iframe = document.querySelector('iframe');
+const player = new Player(iframe);
+const time = localStorage.getItem("videoplayer-current-time");
 
-//     player.getVideoTitle().then(function(title) {
-//         console.log('title:', title);
-//     });
+player.setCurrentTime(time);
 
-//     const onPlay = function(data) {
-//     // data is an object containing properties specific to that event
-// };
-
-// player.on('play', onPlay);
-
-// player.on('eventName', function(data) {
-//     const data = {
-//     duration: 61.857,
-//     percent: 0.049,
-//     seconds: 3.034,
-// }
-// });
+player.on('timeupdate', throttle(function (currentTime) {
+    localStorage.setItem("videoplayer-current-time", JSON.stringify(currentTime.seconds));  
+}
+, 1000)
+ );
 
 
 
-// data is an object containing properties specific to that event
+
+

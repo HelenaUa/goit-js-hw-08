@@ -28,7 +28,7 @@ const formData = {
 const saveRes = JSON.parse(localStorage.getItem(STORAGE_KEY));
 
 if (saveRes) {
-    textarea.value = saveRes.textarea;
+    textarea.value = saveRes.message;
     email.value = saveRes.email;
     formData.email = email.value;
     formData.message = textarea.value; 

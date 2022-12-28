@@ -52,6 +52,9 @@ function onInputTextarea(event) {
 
 function onSubmit(event) {
     event.preventDefault();
+    if (!email.value || !textarea.value) {
+        return
+    };
     event.currentTarget.reset();
     console.log(formData);
     localStorage.removeItem(STORAGE_KEY);

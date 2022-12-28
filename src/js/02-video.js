@@ -28,13 +28,11 @@ player.on('timeupdate', throttle(function (currentTime) {
     localStorage.setItem("videoplayer-current-time", JSON.stringify(currentTime.seconds));  
 }
 , 1000)
- );
-
- player.on('play', function() {
-      if (localStorage.getItem('videoplayer-current-time')){
-    player.setCurrentTime(localStorage.getItem('videoplayer-current-time'));
-}}
 );
+ 
+player.setCurrentTime(localStorage.getItem("videoplayer-current-time")||0);
+
+
 
 
 
